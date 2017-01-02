@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="MySQL - springdemo@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.0">
+    <root id="1"/>
+    <schema id="2" parent="1" name="springdemo">
+      <Visible>1</Visible>
+    </schema>
+    <table id="3" parent="2" name="blog"/>
+    <table id="4" parent="2" name="user"/>
+    <column id="5" parent="3" name="id">
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="6" parent="3" name="title">
+      <DataType>varchar(100)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="7" parent="3" name="content">
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="8" parent="3" name="user_id">
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="9" parent="3" name="pub_date">
+      <DataType>date|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="10" parent="3" name="user_id_idx">
+      <ColNames>user_id</ColNames>
+    </index>
+    <key id="11" parent="3" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="12" parent="3" name="user_id">
+      <ColNames>user_id</ColNames>
+      <RefTableName>user</RefTableName>
+      <RefKeyName>PRIMARY</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="13" parent="4" name="id">
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="14" parent="4" name="nickname">
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="15" parent="4" name="password">
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="16" parent="4" name="first_name">
+      <DataType>varchar(45)|0</DataType>
+    </column>
+    <column id="17" parent="4" name="last_name">
+      <DataType>varchar(45)|0</DataType>
+    </column>
+    <key id="18" parent="4" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+  </database-model>
+</dataSource>

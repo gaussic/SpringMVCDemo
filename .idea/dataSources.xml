@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="3770869138">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
     <data-source source="LOCAL" name="MySQL - springdemo@localhost" uuid="87866f9b-90c5-4a5a-8d9b-1ac31c5993a2">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
@@ -35,10 +35,10 @@
       </driver-properties>
       <libraries>
         <library>
-          <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/mysql-connector-license.txt</url>
+          <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/MySQL Connector/J/5.1.35/mysql-connector-license.txt</url>
         </library>
         <library>
-          <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/mysql-connector-java-5.1.35-bin.jar</url>
+          <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/MySQL Connector/J/5.1.35/mysql-connector-java-5.1.35-bin.jar</url>
         </library>
       </libraries>
     </data-source>
