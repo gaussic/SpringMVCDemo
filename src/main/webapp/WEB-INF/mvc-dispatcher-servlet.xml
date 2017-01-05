@@ -16,6 +16,12 @@
 
     <!-- 静态资源(js、image等)的访问 -->
     <mvc:default-servlet-handler/>
+    <mvc:annotation-driven />
+    <mvc:resources mapping="WEB-INF/dist/**" location="WEB-INF/dist/" />
+    <mvc:resources mapping="WEB-INF/bootstrap/**" location="WEB-INF/bootstrap/" />
+    <mvc:resources mapping="WEB-INF/plugins/**" location="WEB-INF/plugins/" />
+
+
 
     <!-- 开启注解 -->
     <mvc:annotation-driven/>

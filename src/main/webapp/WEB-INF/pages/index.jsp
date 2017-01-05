@@ -19,7 +19,7 @@
     <![endif]-->
 </head>
 <body>
-<a href="login">点击进入学生登录界面</a>
+<a href="WEB-INF/login">点击进入学生登录界面</a>
 <a href="adminLogin">点击进入管理员登录界面</a>
 
 <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
