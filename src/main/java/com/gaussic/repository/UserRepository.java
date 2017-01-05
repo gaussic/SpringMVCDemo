@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Repository
 public interface UserRepository extends JpaRepository<UserEntity, Integer> {
 
-    @Modifying      // 说明该方法是修改操作
+    @Modifying      // 说明该方法是修改操 作
     @Transactional  // 说明该方法是事务性操作
     // 定义查询
     // @Param注解用于提取参数

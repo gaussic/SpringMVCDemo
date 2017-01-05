@@ -5,6 +5,7 @@ import com.gaussic.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,19 +28,31 @@ public class MainController {
         return "index";
     }
 
+    @RequestMapping(value = "/adminLogin", method = RequestMethod.GET)
+    public String adminLogin() {
+        return "adminLogin";
+    }
+
+    @RequestMapping(value = "/adminLoginP", method = RequestMethod.POST)
+    public String adminLoginPost(String username,String password)  {
+        if(username.equals("admin") && password.equals("admin")){
+            return "redirect:/admin/users";
+        }else{
+            return "loginFail";
+        }
+    }
+
     //登陆页面
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login()   {
-        return "login";
+        return "adminLogin";
     }
     //登陆验证
     @RequestMapping(value = "/loginP", method = RequestMethod.POST)
-    public String loginPost(String username,String password)  {
-        if(username.equals("admin") && password.equals("admin")){
-            return "index";
-        }else{
-            return "login";
-        }
+    public String loginPost(String username,String passwd)  {
+       // UserEntity u = this.userRepository.findByNicename(username.getName());
+      //  if(passwd.equals(user))
+        return null;
     }
 
 
@@ -64,7 +77,7 @@ public class MainController {
 
     // post请求，处理添加用户请求，并重定向到用户管理页面
     @RequestMapping(value = "/admin/users/addP", method = RequestMethod.POST)
-    public String addUserPost(@ModelAttribute("user") UserEntity userEntity) {
+            public String addUserPost(@ModelAttribute("user") UserEntity userEntity) {
         // 注意此处，post请求传递过来的是一个UserEntity对象，里面包含了该用户的信息
         // 通过@ModelAttribute()注解可以获取传递过来的'user'，并创建这个对象
 

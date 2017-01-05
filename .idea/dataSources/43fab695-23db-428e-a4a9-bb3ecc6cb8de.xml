@@ -13,48 +13,50 @@
     <schema id="7" parent="1" name="course_selection"/>
     <schema id="8" parent="1" name="sakila"/>
     <schema id="9" parent="1" name="world"/>
-    <table id="10" parent="2" name="blog"/>
-    <table id="11" parent="2" name="user"/>
-    <column id="12" parent="10" name="id">
+    <schema id="10" parent="1" name="springmvc"/>
+    <table id="11" parent="2" name="blog"/>
+    <table id="12" parent="2" name="selection"/>
+    <table id="13" parent="2" name="user"/>
+    <column id="14" parent="11" name="id">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="13" parent="10" name="title">
+    <column id="15" parent="11" name="title">
       <Position>2</Position>
       <DataType>varchar(100)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="14" parent="10" name="content">
+    <column id="16" parent="11" name="content">
       <Position>3</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="15" parent="10" name="user_id">
+    <column id="17" parent="11" name="user_id">
       <Position>4</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="16" parent="10" name="pub_date">
+    <column id="18" parent="11" name="pub_date">
       <Position>5</Position>
       <DataType>date|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="17" parent="10" name="user_id_idx">
+    <index id="19" parent="11" name="user_id_idx">
       <ColNames>user_id</ColNames>
     </index>
-    <key id="18" parent="10" name="PRIMARY">
+    <key id="20" parent="11" name="PRIMARY">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="19" parent="10" name="FKpxk2jtysqn41oop7lvxcp6dqq">
+    <foreign-key id="21" parent="11" name="FKpxk2jtysqn41oop7lvxcp6dqq">
       <ColNames>user_id</ColNames>
       <RefSchemaName>springdemo</RefSchemaName>
       <RefTableName>user</RefTableName>
       <RefKeyName>PRIMARY</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="20" parent="10" name="user_id">
+    <foreign-key id="22" parent="11" name="user_id">
       <ColNames>user_id</ColNames>
       <RefSchemaName>springdemo</RefSchemaName>
       <RefTableName>user</RefTableName>
@@ -63,31 +65,49 @@
       <OnUpdate>no-action</OnUpdate>
       <OnDelete>no-action</OnDelete>
     </foreign-key>
-    <column id="21" parent="11" name="id">
+    <column id="23" parent="12" name="id">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="22" parent="11" name="nickname">
+    <column id="24" parent="12" name="courseid">
+      <Position>2</Position>
+      <DataType>int(10)|0</DataType>
+    </column>
+    <column id="25" parent="12" name="studentid">
+      <Position>3</Position>
+      <DataType>int(10)|0</DataType>
+    </column>
+    <key id="26" parent="12" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="27" parent="13" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="28" parent="13" name="nickname">
       <Position>2</Position>
       <DataType>varchar(45)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="23" parent="11" name="password">
+    <column id="29" parent="13" name="password">
       <Position>3</Position>
       <DataType>varchar(45)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="24" parent="11" name="first_name">
+    <column id="30" parent="13" name="first_name">
       <Position>4</Position>
       <DataType>varchar(45)|0</DataType>
     </column>
-    <column id="25" parent="11" name="last_name">
+    <column id="31" parent="13" name="last_name">
       <Position>5</Position>
       <DataType>varchar(45)|0</DataType>
     </column>
-    <key id="26" parent="11" name="PRIMARY">
+    <key id="32" parent="13" name="PRIMARY">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
