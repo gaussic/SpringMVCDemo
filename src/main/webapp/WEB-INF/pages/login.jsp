@@ -42,7 +42,7 @@
     <div class="login-box-body">
         <p class="login-box-msg">学生登录</p>
 
-        <form:form action="/adminLoginP" method="post">
+        <form:form action="loginP" method="post">
             <div class="form-group has-feedback">
                 <input name="username" type="text" class="form-control" placeholder="学生编号">
                 <span class="glyphicon glyphicon-envelope form-control-feedback"></span>

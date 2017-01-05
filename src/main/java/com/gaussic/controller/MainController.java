@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import javax.servlet.ServletRegistration;
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -45,14 +48,22 @@ public class MainController {
     //登陆页面
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login()   {
-        return "login";
+        return "/login";
     }
     //登陆验证
     @RequestMapping(value = "/loginP", method = RequestMethod.POST)
-    public String loginPost(String username,String passwd)  {
-       // UserEntity u = this.userRepository.findByNicename(username.getName());
-      //  if(passwd.equals(user))
-        return null;
+    public String loginPost(Integer username,String password)  {
+        System.out.println(username);
+        UserEntity sss = userRepository.findOne(username);
+        String pwd = sss.getPassword();
+        System.out.println(pwd);
+        if (password.equals(pwd)){
+            String ret = "redirect:/admin/users/show/" + username;
+            return ret;
+        }
+        else{
+            return "loginFail";
+        }
     }
 
 
