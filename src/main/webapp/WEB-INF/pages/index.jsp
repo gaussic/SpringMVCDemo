@@ -1,32 +1,76 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
-    <title>SpringMVC Demo 首页</title>
+    <title>AdminLTE 2 | Lockscreen</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.6 -->
+    <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="../../dist/css/AdminLTE.min.css">
 
-    <!-- 新 Bootstrap 核心 CSS 文件 -->
-    <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-    <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body>
-<h1>这里是SpringMVC Demo首页</h1>
+<body class="hold-transition lockscreen">
+<!-- Automatic element centering -->
+<div class="lockscreen-wrapper">
+    <div class="lockscreen-logo">
+        <a href="../../index2.html"><b>学生选课管理系统</b>管理员登录</a>
+    </div>
+    <!-- User name -->
+    <div class="lockscreen-name">Admin</div>
 
-<h3>出现此页面，说明配置成功。</h3>
+    <!-- START LOCK SCREEN ITEM -->
+    <div class="lockscreen-item">
+        <!-- lockscreen image -->
+        <div class="lockscreen-image">
+            <img src="../../dist/img/user1-128x128.jpg" alt="User Image">
+        </div>
+        <!-- /.lockscreen-image -->
 
-<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
-<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+        <!-- lockscreen credentials (contains the form) -->
+        <form:form class="lockscreen-credentials" action="/adminLoginP" method="post">
+            <div class="input-group">
+                <input name="password" type="password" class="form-control" placeholder="password">
 
-<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
-<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+                <div class="input-group-btn">
+                    <button type="submit" class="btn"><i class="fa fa-arrow-right text-muted"></i></button>
+                </div>
+            </div>
+        </form:form>
+        <!-- /.lockscreen credentials -->
+
+    </div>
+    <!-- /.lockscreen-item -->
+    <div class="help-block text-center">
+        Enter your password to retrieve your session
+    </div>
+    <div class="text-center">
+        <a href="/login">学生登录</a>
+    </div>
+    <div class="lockscreen-footer text-center">
+        Copyright &copy; 2014-2016 <b><a href="http://almsaeedstudio.com" class="text-black">Almsaeed Studio</a></b><br>
+        All rights reserved
+    </div>
+</div>
+<!-- /.center -->
+
+<!-- jQuery 2.2.3 -->
+<script src="../../plugins/jQuery/jquery-2.2.3.min.js"></script>
+<!-- Bootstrap 3.3.6 -->
+<script src="../../bootstrap/js/bootstrap.min.js"></script>
 </body>
 </html>

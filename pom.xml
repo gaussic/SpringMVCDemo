@@ -55,7 +55,6 @@
             <version>5.1.39</version>
         </dependency>
 
-
     </dependencies>
     <build>
         <finalName>springmvcdemo</finalName>

@@ -42,7 +42,7 @@
                 <prop key="hibernate.connection.driver_class">com.mysql.jdbc.Driver</prop>
                 <prop key="hibernate.connection.url">jdbc:mysql://localhost:3306/springdemo?useSSL=false</prop>
                 <prop key="hibernate.connection.username">root</prop>
-                <prop key="hibernate.connection.password">111111</prop>
+                <prop key="hibernate.connection.password">12345678</prop>
                 <prop key="hibernate.show_sql">false</prop>
                 <prop key="hibernate.connection.useUnicode">true</prop>
                 <prop key="hibernate.connection.characterEncoding">UTF-8</prop>
@@ -67,7 +67,9 @@
         </property>
     </bean>
 
-    <!-- 事务管理 -->
+
+
+        <!-- 事务管理 -->
     <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
         <property name="entityManagerFactory" ref="entityManagerFactory"/>
     </bean>
