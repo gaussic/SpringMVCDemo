@@ -30,12 +30,12 @@ public class MainController {
 
     @RequestMapping(value = "/adminLogin", method = RequestMethod.GET)
     public String adminLogin() {
-        return "adminLogin";
+        return "index";
     }
 
     @RequestMapping(value = "/adminLoginP", method = RequestMethod.POST)
-    public String adminLoginPost(String username,String password)  {
-        if(username.equals("admin") && password.equals("admin")){
+    public String adminLoginPost(String password)  {
+        if(password.equals("admin")){
             return "redirect:/admin/users";
         }else{
             return "loginFail";
@@ -45,7 +45,7 @@ public class MainController {
     //登陆页面
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login()   {
-        return "adminLogin";
+        return "login";
     }
     //登陆验证
     @RequestMapping(value = "/loginP", method = RequestMethod.POST)
