@@ -29,6 +29,7 @@ public class BlogController {
     // 查看所有博文
     @RequestMapping(value = "/admin/blogs", method = RequestMethod.GET)
     public String showBlogs(ModelMap modelMap) {
+		System.out.println("ShowBlogs Method Start");
         List<BlogEntity> blogList = blogRepository.findAll();
         modelMap.addAttribute("blogList", blogList);
         return "admin/blogs";
