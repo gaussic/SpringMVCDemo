@@ -1,0 +1,56 @@
+
+.radio_label {
+    position: absolute;
+    /*设置背景*/
+    background: url(../image/radioButton2.png) no-repeat;
+    /*设置背景大小：	 (这里我的背景图是两个图标上下接在一起的，故高度为背景的两倍)*/
+    /*background-size：30px 30px;*/
+    background-size: 30px;
+    background-position: 0 -30px;
+
+    /*background-size：contain;*/
+    /*width: 20px;*/
+    /*height:20px;*/
+    /*设置显示方式：	（设置label为行内块元素，让它能有宽高，而且不换行）*/
+    display: inline-block;
+    /*设置高度和行高：*/
+    height: 30px;
+    line-height: 30px;
+    /*设置文字靠右一点：*/
+    text-indent: 40px;
+}
+
+.checked {
+    background-position: 0 0;
+    /*background: url(image/radioButton.png) no-repeat;*/
+}
+
+input[type="checkbox"] {
+    position: absolute;
+}
+
+input[type="checkbox"] {
+    background: url(../image/check-box-outline-blank.png) no-repeat;
+    background-size: 100% 100%;
+    border: none;
+    display: inline-block;
+    /*设置为 行内块 就能改变大小了 */
+    width: 30px;
+    height: 30px;
+    -webkit-appearance: none;
+    /*改变元素外观 */
+    -moz-appearance: none;
+    /*改变元素外观 */
+    appearance: none;
+    /*改变元素外观 */
+    /*            background: #fff;
+                border-radius: 3px;
+                border: 1px solid #888;*/
+}
+
+input[type="checkbox"]:checked {
+    /*/ / 复选框选中的样式 使用带有对号的 背景图片打底 */
+    background: url(../image/check-box-outline.png) no-repeat;
+    background-size: 100% 100%;
+    border: none;
+}

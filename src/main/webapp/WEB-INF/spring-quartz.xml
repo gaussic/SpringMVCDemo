@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:task="http://www.springframework.org/schema/task"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/task
+       http://www.springframework.org/schema/task/spring-task.xsd">
+
+    <context:component-scan base-package="com.gaussic.quartz" />
+    <!--<context:component-scan base-package="com.gaussic.dataGet" />-->
+    <!--<aop:aspectj-autoproxy proxy-target-class="true" />-->
+    <context:annotation-config />
+    <!-- 在applicationContext.xml中进行配置，使用定时器
+        ref : pojo类的名称
+        method : 调用的方式名称
+        cron : cronExpression表达式
+        cron="0/5 * * * * ?"  //表示五秒钟执行一次
+     -->
+    <task:scheduled-tasks>
+        <task:scheduled ref="taskCool" method="testJob" cron="0/5 * * * * ?"/>
+    </task:scheduled-tasks>
+
+
+    <!--&lt;!&ndash; job的定义 &ndash;&gt;-->
+    <!--<bean name="myJob" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">-->
+        <!--<property name="jobClass" value="com.gaussic.quartz.TaskCool" />-->
+        <!--&lt;!&ndash; 回调参数的定义 &ndash;&gt;-->
+        <!--<property name="jobDataAsMap">-->
+            <!--<map>-->
+                <!--<entry key="name" value="zhangsan" />-->
+            <!--</map>-->
+        <!--</property>-->
+    <!--</bean>-->
+
+    <!--&lt;!&ndash; SimpleTrigger 触发器 &ndash;&gt;-->
+    <!--<bean id="simpleTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean">-->
+        <!--<property name="jobDetail" ref="myJob" />-->
+        <!--<property name="startDelay" value="0" />&lt;!&ndash; 调度工厂实例化后，经过0秒开始执行调度 &ndash;&gt;-->
+        <!--<property name="repeatInterval" value="2000" />&lt;!&ndash; 每2秒调度一次 &ndash;&gt;-->
+    <!--</bean>-->
+
+    <!--&lt;!&ndash; CronTriggerBean 触发器 &ndash;&gt;-->
+    <!--<bean id="cronTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">-->
+        <!--<property name="jobDetail" ref="myJob" />-->
+        <!--&lt;!&ndash; 每3秒执行一次 &ndash;&gt;-->
+        <!--<property name="cronExpression" value="0/3 * * * * ?" />-->
+    <!--</bean>-->
+
+    <!--&lt;!&ndash; 配置调度工厂 &ndash;&gt;-->
+    <!--<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">-->
+        <!--<property name="triggers">-->
+            <!--<list>-->
+                <!--<ref bean="simpleTrigger" />-->
+                <!--<ref bean="cronTrigger" />-->
+            <!--</list>-->
+        <!--</property>-->
+    <!--</bean>-->
+
+</beans>

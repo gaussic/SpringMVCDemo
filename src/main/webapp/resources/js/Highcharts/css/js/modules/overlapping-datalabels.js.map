@@ -1,0 +1,8 @@
+{
+"version":3,
+"file":"",
+"lineCount":8,
+"mappings":"A;;;;;;;AAQC,SAAS,CAACA,CAAD,CAAU,CACG,QAAtB,GAAI,MAAOC,OAAX,EAAkCA,MAAAC,QAAlC,CACCD,MAAAC,QADD,CACkBF,CADlB,CAGCA,CAAA,CAAQG,UAAR,CAJkB,CAAnB,CAAA,CAMC,QAAS,CAACA,CAAD,CAAa,EANvB;",
+"sources":["Input_0"],
+"names":["factory","module","exports","Highcharts"]
+}

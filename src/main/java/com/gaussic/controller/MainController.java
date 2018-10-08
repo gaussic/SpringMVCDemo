@@ -1,7 +1,9 @@
 package com.gaussic.controller;
 
 import com.gaussic.model.UserEntity;
+import com.gaussic.model.WUserEntity;
 import com.gaussic.repository.UserRepository;
+import com.gaussic.repository.WUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -21,10 +24,14 @@ public class MainController {
     // 自动装配数据库接口，不需要再写原始的Connection来操作数据库
     @Autowired
     UserRepository userRepository;
+    @Resource
+    WUserRepository wUserRepository;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String index() {
-        return "index";
+        List<WUserEntity> list = wUserRepository.findAll();
+        System.out.println("list-----3434------:    " + list.size());
+        return "main";
     }
 
     @RequestMapping(value = "/admin/users", method = RequestMethod.GET)

@@ -7,7 +7,7 @@ import java.util.Collection;
  * Created by dzkan on 2016/3/8.
  */
 @Entity
-@Table(name = "user", schema = "springdemo", catalog = "")
+@Table(name = "user", schema = "wind", catalog = "")
 public class UserEntity {
     private int id;
     private String nickname;
@@ -92,10 +92,10 @@ public class UserEntity {
         return result;
     }
 
-    @OneToMany(mappedBy = "userByUserId")
-    public Collection<BlogEntity> getBlogsById() {
-        return blogsById;
-    }
+//    @OneToMany(mappedBy = "userByUserId")
+//    public Collection<BlogEntity> getBlogsById() {
+//        return blogsById;
+//    }
 
     public void setBlogsById(Collection<BlogEntity> blogsById) {
         this.blogsById = blogsById;

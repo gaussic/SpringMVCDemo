@@ -1,0 +1,52 @@
+.container {
+    position: absolute;
+    height: 300px;
+}
+/*磨煤机曲线图*/
+.containerMill{
+    width: 850px;
+    left:50px;
+    top:100px;
+    height:200px;
+}
+/*密度曲线图*/
+.containerCurve {
+    width: 850px;
+    left: 50px;
+    top: 300px;
+}
+/*密度相对柱图*/
+.containerRelativeBar {
+    width: 400px;
+    left: 950px;
+    top: 300px;
+}
+/*密度绝对柱图*/
+.containerAbsoluteBar {
+    width: 400px;
+    left: 1400px;
+    top: 300px;
+}
+/*风速曲线图*/
+.containerVCurve {
+    width: 850px;
+    left: 50px;
+    top: 600px;
+}
+/*风速相对柱图*/
+.containerVRelativeBar {
+    width: 400px;
+    left: 950px;
+    top: 600px;
+}
+/*风速绝对柱图*/
+.containerVAbsoluteBar {
+    width: 400px;
+    left: 1400px;
+    top: 600px;
+}
+
+td ,th{
+    border: 1px solid black;
+    text-align:center;
+}

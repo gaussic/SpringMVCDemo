@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+                           http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.0.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+    <context:component-scan base-package="com.gaussic.quartz3" />
+    <!--<bean id="jobFactory" class="com.gaussic.quartz3.MyJobFactory"/>-->
+    <!--<bean id="jobFactory" class="com.gaussic.quartz3.MyJobFactory"/>-->
+
+    <!-- 配置调度程序quartz ，其中配置JobDetail有两种方式-->
+    <!--方式一：使用JobDetailBean，任务类必须实现Job接口 -->
+    <bean id="simpleJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject" ref="taskCool" />
+        <property name="targetMethod" value="testJob" />
+
+    <!--    <property name="name" value="exampleJob"></property>
+        <property name="jobClass" value="com.dupang.quartz.SpringQtz1"></property>
+        <property name="jobDataAsMap">
+            <map>
+                <entry key="service"><value>simple is the beat</value></entry>
+            </map>
+        </property>-->
+    </bean>
+    <!--运行时请将方式一注释掉！ -->
+    <!-- 方式二：使用MethodInvokingJobDetailFactoryBean，任务类可以不实现Job接口，通过targetMethod指定调用方法-->
+    <!-- 定义目标bean和bean中的方法 -->
+<!--    <bean id="SpringQtzJob" class="com.dupang.quartz.SpringQtz2"/>
+    <bean id="SpringQtzJobMethod" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject">
+            <ref bean="SpringQtzJob"/>
+        </property>
+        <property name="targetMethod">  &lt;!&ndash; 要执行的方法名称 &ndash;&gt;
+            <value>execute</value>
+        </property>
+    </bean>-->
+
+    <!-- ======================== 调度触发器 ======================== -->
+   <!-- <bean id="CronTriggerBean" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail" ref="SpringQtzJobMethod"></property>
+        <property name="cronExpression" value="0/5 * * * * ?"></property>
+    </bean>-->
+
+    <!-- Run the job every 2 seconds with initial delay of 1 second -->
+    <bean id="simpleTrigger"  class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean">
+        <property name="jobDetail" ref="simpleJobDetail" />
+        <property name="startDelay" value="1000" />
+        <property name="repeatInterval" value="5000" />
+    </bean>
+
+    <!-- ======================== 调度工厂 ======================== -->
+    <bean id="SpringJobSchedulerFactoryBean" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <property name="triggers">
+            <list>
+                <ref bean="simpleTrigger"/>
+            </list>
+        </property>
+        <property name="jobFactory" ref="jobFactory"></property>
+    </bean>
+
+</beans>

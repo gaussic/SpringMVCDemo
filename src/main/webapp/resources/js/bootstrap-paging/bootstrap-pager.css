@@ -1,0 +1,24 @@
+.pagination > li > a {
+    background: #fafafa;
+    color: #666;
+}
+
+.pagination.pagination-flat > li > a {
+    border-radius: 0 !important;
+}
+
+.pager-big a {
+    margin: 0 5px;
+    line-height: 2
+}
+
+.pager-big:first-child a {
+    margin-right: 5px;
+    line-height: 2
+}
+
+.pager-big:last-child a {
+    margin-left: 5px;
+    line-height: 2
+}
+

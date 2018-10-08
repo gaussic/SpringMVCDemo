@@ -1,0 +1,45 @@
+/**磨煤机DIV样式*/
+.coalMillTableDivClass {
+    position: absolute;
+
+}
+
+.coalMillTableDivClass table {
+    width: 640px;
+    border: 1px solid black;
+    text-align: center;
+    background-color: #2a2a2b;
+    color:#ffffff;
+    font-family: "宋体", serif;
+    font-size:10px;
+    border-top:1px solid white
+}
+.coalMillTableDivClass table td{
+    height:20px;
+
+}
+
+.coalMillTableDivClass td, th {
+    border:1px solid #595959;
+
+}
+
+#coalMillTableADiv {
+    top: 430px;
+    left: 100px;
+}
+
+#coalMillTableBDiv {
+    top: 430px;
+    left: 900px;
+}
+
+#coalMillTableCDiv {
+    top: 880px;
+    left: 100px;
+}
+
+#coalMillTableDDiv {
+    top: 880px;
+    left: 900px;
+}

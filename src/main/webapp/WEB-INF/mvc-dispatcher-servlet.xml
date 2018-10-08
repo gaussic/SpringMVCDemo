@@ -11,9 +11,17 @@
        http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
+
+    <bean id="jobFactory" class="com.gaussic.quartz3.MyJobFactory"/>
     <!--指明 controller 所在包，并扫描其中的注解-->
     <context:component-scan base-package="com.gaussic.controller"/>
+    <context:component-scan base-package="com.gaussic.service"/>
+    <!--<context:component-scan base-package="com.gaussic.quartz" />-->
+    <context:component-scan base-package="com.gaussic.dataGet" />
 
+    <context:component-scan base-package="com.gaussic.dataGet.dcsHandle"/>
+    <context:component-scan base-package="com.gaussic.dataGet.windPojoHandle"/>
+    <context:component-scan base-package="com.gaussic.dataGet.pipeHandle"/>
     <!-- 静态资源(js、image等)的访问 -->
     <mvc:default-servlet-handler/>
 
@@ -24,38 +32,46 @@
     <!--用于支持Servlet、JSP视图解析-->
     <bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
-        <property name="prefix" value="/WEB-INF/pages/"/>
+        <property name="prefix" value="/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
+    <!--静态资源映射-->
+    <!--本项目把静态资源放在了webapp的statics目录下，资源映射如下-->
+    <mvc:resources mapping="/css/**" location="/resources/css/"/>
+    <mvc:resources mapping="/js/**" location="/resources/js/"/>
+    <mvc:resources mapping="/image/**" location="/resources/image/"/>
 
     <!-- 表示JPA Repository所在的包 -->
     <jpa:repositories base-package="com.gaussic.repository"/>
 
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="persistenceUnitName" value="defaultPersistenceUnit"/>
-        <property name="packagesToScan" value="com.gaussic.model" />
+        <property name="packagesToScan"
+                  value="com.gaussic.model ,com.gaussic.model.history,com.gaussic.model.dcs,com.gaussic.model.dcsRemote"/>
         <property name="jpaVendorAdapter">
             <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"/>
         </property>
         <property name="jpaProperties">
             <props>
                 <prop key="hibernate.connection.driver_class">com.mysql.jdbc.Driver</prop>
-                <prop key="hibernate.connection.url">jdbc:mysql://localhost:3306/springdemo?useSSL=false</prop>
+                <prop key="hibernate.connection.url">jdbc:mysql://localhost:3306/wind?useSSL=false</prop>
                 <prop key="hibernate.connection.username">root</prop>
-                <prop key="hibernate.connection.password">111111</prop>
+                <prop key="hibernate.connection.password">root</prop>
                 <prop key="hibernate.show_sql">false</prop>
                 <prop key="hibernate.connection.useUnicode">true</prop>
                 <prop key="hibernate.connection.characterEncoding">UTF-8</prop>
                 <prop key="hibernate.format_sql">true</prop>
-                <prop key="hibernate.use_sql_comments">true</prop>
+                <prop key="hibernate.use_sql_comments">false</prop>
                 <prop key="hibernate.hbm2ddl.auto">update</prop>
                 <prop key="hibernate.connection.autoReconnect">true</prop>
                 <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
                 <prop key="connection.autoReconnectForPools">true</prop>
                 <prop key="connection.is-connection-validation-required">true</prop>
-
+                <!--连接池-->
                 <prop key="hibernate.c3p0.validate">true</prop>
-                <prop key="hibernate.connection.provider_class">org.hibernate.service.jdbc.connections.internal.C3P0ConnectionProvider</prop>
+                <prop key="hibernate.connection.provider_class">
+                    org.hibernate.service.jdbc.connections.internal.C3P0ConnectionProvider
+                </prop>
                 <prop key="hibernate.c3p0.min_size">5</prop>
                 <prop key="hibernate.c3p0.max_size">600</prop>
                 <prop key="hibernate.c3p0.timeout">1800</prop>
@@ -74,4 +90,20 @@
 
     <!-- 开启事务管理注解 -->
     <tx:annotation-driven transaction-manager="transactionManager"/>
+
+
+    <mvc:interceptors>
+        <!--<bean class="org.springframework.orm.hibernate5.support.OpenSessionInViewInterceptor">
+            <property name="sessionFactory" ref="entityManagerFactory"></property>
+        </bean>-->
+        <bean class="org.springframework.orm.jpa.support.OpenEntityManagerInViewInterceptor">
+            <property name="entityManagerFactory" ref="entityManagerFactory"></property>
+        </bean>
+        <!--<bean class="com.w"-->
+    </mvc:interceptors>
+
+
+    <!--引入定时器任务-->
+    <import resource="spring-quartz3.xml"/>
+
 </beans>

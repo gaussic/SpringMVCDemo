@@ -1,0 +1,50 @@
+.container {
+    position: absolute;
+    width: 640px;
+    height: 330px;
+    background: white;
+}
+
+/*//绝对定位，这个是随页面走动的，可以换成fixed，不随页面走动。*/
+.container1 {
+    left: 100px;
+    top: 100px;
+    z-index: 10;
+}
+
+.container2 {
+    left: 900px;
+    top: 100px;
+    z-index: 10;
+}
+
+.container3 {
+    left: 100px;
+    top: 550px;
+    z-index: 10;
+}
+
+.container4 {
+    left: 900px;
+    top: 550px;
+    z-index: 10;
+}
+
+.divShow {
+    display: block;
+}
+
+.divHide {
+    display: none;
+}
+
+.changeBtnClass {
+    position: absolute;
+    height: 32px;
+    width: 78px;
+}
+
+/*按钮被选择以后，按钮的样式*/
+.currentBtnClass{
+    border:2px solid red;
+}
